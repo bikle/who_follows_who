@@ -3,4 +3,4 @@ Feature: Home page shows something
 
   Scenario: Home page shows something
     Given I am on the home page
-    Then I should see "Who follows who"
+    Then I should see "Who Follows Who"

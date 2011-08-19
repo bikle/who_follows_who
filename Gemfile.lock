@@ -29,6 +29,7 @@ GEM
       activemodel (= 3.0.10)
       activesupport (= 3.0.10)
     activesupport (3.0.10)
+    addressable (2.2.6)
     archive-tar-minitar (0.5.2)
     arel (2.0.10)
     autotest (4.4.6)
@@ -61,9 +62,16 @@ GEM
     ffi (1.0.9)
     gherkin (2.4.11)
       json (>= 1.4.6)
+    haml (3.1.2)
+    haml2slim (0.4.6)
+      haml (>= 3.0)
+      nokogiri
+      ruby_parser
     i18n (0.5.0)
     json (1.5.3)
     json_pure (1.5.3)
+    launchy (2.0.5)
+      addressable (~> 2.2.6)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
     mail (2.2.19)
@@ -118,15 +126,23 @@ GEM
       ruby-debug-base19 (>= 0.11.19)
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
+    ruby_parser (2.1.0)
+      sexp_processor (~> 3.0)
     rubyzip (0.9.4)
     selenium-webdriver (2.4.0)
       childprocess (>= 0.2.1)
       ffi (>= 1.0.7)
       json_pure
       rubyzip
+    sexp_processor (3.0.6)
+    slim (1.0.1)
+      temple (~> 0.3.0)
+      tilt (~> 1.2)
     sqlite3 (1.3.4)
+    temple (0.3.2)
     term-ansicolor (1.0.6)
     thor (0.14.6)
+    tilt (1.3.2)
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
@@ -145,8 +161,12 @@ DEPENDENCIES
   autotest
   cucumber-rails
   database_cleaner
+  haml
+  haml2slim
+  launchy
   rails (= 3.0.10)
   rspec-rails (~> 2.6)
   ruby-debug19
+  slim
   sqlite3
   webrat

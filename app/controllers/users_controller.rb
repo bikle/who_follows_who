@@ -80,4 +80,10 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  # PUT /users/destroy_via_put/1
+  def destroy_via_put
+    destroy
+  end
+
 end

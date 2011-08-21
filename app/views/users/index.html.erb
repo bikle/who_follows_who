@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Name</th>
+    <th><%= render 'wfw_name_heading' %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,14 +13,17 @@
     <td><%= user.name %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <!-- This link depends on JavaScript.  I replace it with a form.
+      <td><%= link_to 'Destroy', user, :method => :delete %></td>
+    -->
+    <td><%= render :partial => 'wfw_user_destroy', :locals => { :user => user } %></td>
   </tr>
 <% end %>
 
-<%= render 'wfw_users_list' %>
-
 </table>
 
+<br />
+<%= render 'wfw_users_list' %>
 <br />
 
 <%= link_to 'New User', new_user_path %>

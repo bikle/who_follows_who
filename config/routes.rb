@@ -1,4 +1,5 @@
 Sc10::Application.routes.draw do
+  match 'users/destroy_via_put/:id' => 'users#destroy_via_put'
   resources :users
 
   # The priority is based upon order of creation:

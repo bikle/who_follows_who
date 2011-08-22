@@ -48,3 +48,4 @@ end
 #     DatabaseCleaner.strategy = :transaction
 #   end
 #
+$VERBOSE=nil

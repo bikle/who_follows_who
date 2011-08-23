@@ -9,7 +9,11 @@ Feature: User1 follows User2
     And I should see "Bob"
     And I should see "Carl"
     And I follow "Show"
-    And pending_somthun
+    And I should see "Alan"
+    And I should see "Following Nobody"
+    And pendthis I should see "Not Following Bob"
+
+
 
 
 

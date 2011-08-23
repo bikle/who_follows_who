@@ -1,0 +1,16 @@
+/! app/views/users/_wfw_show.html.slim
+
+- if @user.targets.empty?
+  ' Following Nobody
+- else
+  ul
+  - for target in @user.targets do
+    li =target.name
+
+
+- unless @user.non_targets.empty?
+  ul
+  - for non_target in @user.non_targets do
+    li
+      =non_target.name
+      ' Is not followed yet.'

@@ -1,4 +1,4 @@
 /! app/views/users/_wfw_user_destroy.html.slim
 
-= form_for(user, :url => {:id => user.id, :action => "destroy_via_put" }) do |f|
+= form_for(user, :url => {:id => user, :action => "destroy_via_put" }) do |f|
   = f.submit "Delete User"

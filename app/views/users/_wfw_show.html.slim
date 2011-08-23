@@ -1,16 +1,21 @@
 /! app/views/users/_wfw_show.html.slim
 
+br/
+br/
 - if @user.targets.empty?
-  ' Following Nobody
+  ="#{@user.name} is following nobody."
 - else
   ul
   - for target in @user.targets do
-    li =target.name
+    li ="#{@user.name} is following #{target.name}."
 
 
 - unless @user.non_targets.empty?
   ul
   - for non_target in @user.non_targets do
     li
-      =non_target.name
-      ' Is not followed yet.'
+      ="#{@user.name} is not following #{non_target.name} yet."
+      br/
+      = form_for(@user, :url => {:target_id => non_target, :id => @user, :action => "target_via_put" }) do |f|
+        = f.submit "I want #{@user.name} to follow #{non_target.name}"
+

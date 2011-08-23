@@ -82,8 +82,22 @@ class UsersController < ApplicationController
   end
 
   # PUT /users/destroy_via_put/1
+  # This helps me delete users with no JavaScript in View.
+  # I use form_for instead.
   def destroy_via_put
     destroy
+  end
+
+  # PUT /users/target_via_put/1?target_id=2
+  # Makes user1 target user2
+  def target_via_put
+debugger
+    @user = User.find(params[:id])
+    unless @user.blank?
+      @target = User.find(params[:target_id])
+      @user.targets << @target unless @target.blank?
+    end
+    render :action => "show"
   end
 
 end

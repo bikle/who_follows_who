@@ -8,12 +8,16 @@ Feature: User1 follows User2
     And I should see "Alan"
     And I should see "Bob"
     And I should see "Carl"
-    And I follow "Show"
+    And I follow "Alan"
     And I should see "Alan"
-    And I should see "Following Nobody"
-    And pendthis I should see "Not Following Bob"
+    Then I should see "Alan is following nobody"
+    And I should see "Alan is not following Bob yet."
+    And I should see "Alan is not following Carl yet."
 
-
-
-
+  Scenario: Alan follows Bob
+    Given I am on the home page
+    And I follow "List Users"
+    And I follow "Alan"
+    When I press "Follow Bob"
+    Then I should see "Alan is following Bob."
 

@@ -5,17 +5,30 @@ br/
 - if @user.targets.empty?
   ="#{@user.name} is following nobody."
 - else
+  hr/
+  ' Following Section:
   ul
   - for target in @user.targets do
-    li ="#{@user.name} is following #{target.name}."
-
+    li
+      ="#{@user.name} is following #{target.name}."
+      br/
+      = form_for(@user, :url => {:target_id => target, :id => @user, :action => "un_target_via_put" }) do |f|
+        = f.submit "I do not want #{@user.name} to follow #{target.name}"
 
 - unless @user.non_targets.empty?
+  hr/
+  ' Not Following Section:
   ul
   - for non_target in @user.non_targets do
     li
-      ="#{@user.name} is not following #{non_target.name} yet."
+      ="#{@user.name} is not following #{non_target.name}."
       br/
       = form_for(@user, :url => {:target_id => non_target, :id => @user, :action => "target_via_put" }) do |f|
         = f.submit "I want #{@user.name} to follow #{non_target.name}"
-
+hr/
+="Followers of #{@user.name}:"
+ul
+- for follower in @user.followers do
+    li
+      ="#{follower.name} is following #{@user.name}."
+hr/

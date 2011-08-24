@@ -91,11 +91,21 @@ class UsersController < ApplicationController
   # PUT /users/target_via_put/1?target_id=2
   # Makes user1 target user2
   def target_via_put
-debugger
     @user = User.find(params[:id])
     unless @user.blank?
       @target = User.find(params[:target_id])
       @user.targets << @target unless @target.blank?
+    end
+    render :action => "show"
+  end
+
+  # PUT /users/un_target_via_put/1?target_id=2
+  # Makes user1 un-target user2
+  def un_target_via_put
+    @user = User.find(params[:id])
+    unless @user.blank?
+      @target = User.find(params[:target_id])
+      (@user.targets = @user.targets - [@target]) unless @target.blank?
     end
     render :action => "show"
   end

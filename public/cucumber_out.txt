@@ -1,0 +1,96 @@
+public/cucumber_out.txt
+
+Here is a screen dump of a cucumber run:
+
+bikle611@h2:~/pt/aug/wfw$ bin/rake cucumber
+/home/bikle611/.rvm/rubies/ruby-1.9.2-p290/bin/ruby -S bundle exec cucumber  --profile default
+Using the default profile...
+@alan_bob_carl
+Feature: User1 follows User2
+  I want Alan to follow Bob and then Carl
+  I want Alan to un-follow Bob
+
+  Scenario: Alan follows no one                    # features/alan_follows_bob.feature:6
+    Given I am on the home page                    # features/step_definitions/web_steps.rb:44
+    When I follow "List Users"                     # features/step_definitions/web_steps.rb:56
+    And I should see "Alan"                        # features/step_definitions/web_steps.rb:105
+    And I should see "Bob"                         # features/step_definitions/web_steps.rb:105
+    And I should see "Carl"                        # features/step_definitions/web_steps.rb:105
+    And I follow "Alan"                            # features/step_definitions/web_steps.rb:56
+    And I should see "Alan"                        # features/step_definitions/web_steps.rb:105
+    Then I should see "Alan is following nobody"   # features/step_definitions/web_steps.rb:105
+    And I should see "Alan is not following Bob."  # features/step_definitions/web_steps.rb:105
+    And I should see "Alan is not following Carl." # features/step_definitions/web_steps.rb:105
+
+  Scenario: Alan follows Bob                   # features/alan_follows_bob.feature:18
+    Given I am on the home page                # features/step_definitions/web_steps.rb:44
+    And I follow "List Users"                  # features/step_definitions/web_steps.rb:56
+    And I follow "Alan"                        # features/step_definitions/web_steps.rb:56
+    When I press "I want Alan to follow Bob"   # features/step_definitions/web_steps.rb:52
+    Then I should see "Alan is following Bob." # features/step_definitions/web_steps.rb:105
+
+  Scenario: Alan un-follows Bob                     # features/alan_follows_bob.feature:25
+    Given I am on the home page                     # features/step_definitions/web_steps.rb:44
+    And I follow "List Users"                       # features/step_definitions/web_steps.rb:56
+    And I follow "Alan"                             # features/step_definitions/web_steps.rb:56
+    And I press "I want Alan to follow Bob"         # features/step_definitions/web_steps.rb:52
+    And I should see "Alan is following Bob."       # features/step_definitions/web_steps.rb:105
+    When I press "I do not want Alan to follow Bob" # features/step_definitions/web_steps.rb:52
+    Then I should see "Alan is not following Bob."  # features/step_definitions/web_steps.rb:105
+
+  Scenario: Alan follows Bob who then sees Alan # features/alan_follows_bob.feature:34
+    Given I am on the home page                 # features/step_definitions/web_steps.rb:44
+    And I follow "List Users"                   # features/step_definitions/web_steps.rb:56
+    And I follow "Alan"                         # features/step_definitions/web_steps.rb:56
+    When I press "I want Alan to follow Bob"    # features/step_definitions/web_steps.rb:52
+    And I follow "List Users"                   # features/step_definitions/web_steps.rb:56
+    And I follow "Bob"                          # features/step_definitions/web_steps.rb:56
+    Then I should see "Alan is following Bob."  # features/step_definitions/web_steps.rb:105
+
+Feature: Create a user
+  I want to create a user
+
+  Scenario: Follow create user link # features/create_user.feature:4
+    Given I am on the home page     # features/step_definitions/web_steps.rb:44
+    When I follow "Create a User"   # features/step_definitions/web_steps.rb:56
+    Then I should see "New user"    # features/step_definitions/web_steps.rb:105
+
+Feature: Home page shows something
+  I want to see something on the home page
+
+  Scenario: Home page shows something   # features/home_page.feature:4
+    Given I am on the home page         # features/step_definitions/web_steps.rb:44
+    Then I should see "Who Follows Who" # features/step_definitions/web_steps.rb:105
+
+Feature: List Users
+  I want to list users
+
+  Scenario: Follow users link                       # features/list_users.feature:4
+    Given I am on the home page                     # features/step_definitions/web_steps.rb:44
+    When I follow "List Users"                      # features/step_definitions/web_steps.rb:56
+    Then I should see "Listing users"               # features/step_definitions/web_steps.rb:105
+    And I should see "No users have been added yet" # features/step_definitions/web_steps.rb:105
+
+  Scenario: Create 3 users Alan, Bob, Carl            # features/list_users.feature:10
+    Given I am on the home page                       # features/step_definitions/web_steps.rb:44
+    When I follow "Create a User"                     # features/step_definitions/web_steps.rb:56
+    And I should see "New user"                       # features/step_definitions/web_steps.rb:105
+    And I fill in "Name" with "Alan"                  # features/step_definitions/web_steps.rb:60
+    And I press "Create User"                         # features/step_definitions/web_steps.rb:52
+    And I should see "User was successfully created." # features/step_definitions/web_steps.rb:105
+    And I follow "Create a User"                      # features/step_definitions/web_steps.rb:56
+    And I fill in "Name" with "Bob"                   # features/step_definitions/web_steps.rb:60
+    And I press "Create User"                         # features/step_definitions/web_steps.rb:52
+    And I follow "Create a User"                      # features/step_definitions/web_steps.rb:56
+    And I fill in "Name" with "Carl"                  # features/step_definitions/web_steps.rb:60
+    And I press "Create User"                         # features/step_definitions/web_steps.rb:52
+    And I follow "List Users"                         # features/step_definitions/web_steps.rb:56
+    Then I should see "Listing users"                 # features/step_definitions/web_steps.rb:105
+    And I should see "Alan"                           # features/step_definitions/web_steps.rb:105
+    And I should see "Bob"                            # features/step_definitions/web_steps.rb:105
+    And I should see "Carl"                           # features/step_definitions/web_steps.rb:105
+
+8 scenarios (8 passed)
+55 steps (55 passed)
+0m3.820s
+bikle611@h2:~/pt/aug/wfw$ 

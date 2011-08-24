@@ -1,6 +1,7 @@
 @alan_bob_carl
 Feature: User1 follows User2
   I want Alan to follow Bob and then Carl
+  I want Alan to un-follow Bob
 
   Scenario: Alan follows no one
     Given I am on the home page

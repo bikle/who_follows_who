@@ -20,6 +20,14 @@ Currently, this Rails app is deployed here:
 
 http://wfw.heroku.com
 
+When I run 
+
+bin/rake cucumber
+
+I should see this:
+
+http://wfw.heroku.com/cucumber_out.txt
+
 If you have questions send them to dan@bot4.us with no-spam in the subject.
 
 Thanks,
